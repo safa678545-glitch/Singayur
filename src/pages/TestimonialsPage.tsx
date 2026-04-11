@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Testimonials from '../components/Testimonials';
+import TestimonialForm from '../components/TestimonialForm';
 
 const TestimonialsPage: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const TestimonialsPage: React.FC = () => {
         </div>
       </div>
       <Testimonials />
+      <TestimonialForm />
     </>
   );
 };

@@ -37,13 +37,6 @@ export interface Step {
   description: string;
 }
 
-export interface Testimonial {
-  stars: number;
-  quote: string;
-  name: string;
-  location: string;
-}
-
 export interface ContactInfo {
   icon: string;
   text: string;
@@ -57,4 +50,28 @@ export interface FooterLink {
 export interface FooterColumn {
   title: string;
   links: FooterLink[];
+}
+
+/** Supabase-aligned interfaces */
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  icon: string;
+  category: string;
+  read_time: string;
+  author: string;
+  created_at: string;
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  location: string;
+  quote: string;
+  stars: number;
+  approved: boolean;
+  created_at: string;
 }

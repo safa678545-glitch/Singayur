@@ -10,7 +10,6 @@ import type {
   Service,
   Condition,
   Step,
-  Testimonial,
   ContactInfo,
   FooterColumn,
 } from './types';
@@ -113,27 +112,6 @@ export const STEPS: Step[] = [
     number: '04',
     title: 'Heal & Thrive',
     description: 'Follow your plan with regular check-ins and ongoing support from Dr. Ashida.',
-  },
-];
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    stars: 5,
-    quote: "After years of struggling with IBS, Dr. Ashida's herbal plan transformed my gut health in just 6 weeks. Truly life-changing!",
-    name: 'Aisha M.',
-    location: 'Singapore',
-  },
-  {
-    stars: 5,
-    quote: "I came in with chronic joint pain. After my Panchakarma sessions I'm pain-free. The personalised approach is what makes Singayur so special.",
-    name: 'Rajesh K.',
-    location: 'Orchard, SG',
-  },
-  {
-    stars: 5,
-    quote: "Dr. Ashida treated my PCOS holistically — no harsh medicines. My hormones are balanced and I feel like myself again. Highly recommend!",
-    name: 'Preethi S.',
-    location: 'Clementi, SG',
   },
 ];
 

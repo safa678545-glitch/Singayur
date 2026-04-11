@@ -1,81 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useFadeUp } from '../hooks/useFadeUp';
-
-interface BlogPost {
-  id: string;
-  icon: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-}
-
-const BLOG_POSTS: BlogPost[] = [
-  {
-    id: 'understanding-prakriti',
-    icon: '🌿',
-    title: 'Understanding Your Prakriti: The Foundation of Ayurvedic Healing',
-    excerpt:
-      'Discover how your unique constitutional type — Vata, Pitta, or Kapha — shapes your health, personality, and the ideal path to wellness.',
-    date: 'Apr 5, 2025',
-    readTime: '6 min read',
-    category: 'Ayurveda Basics',
-  },
-  {
-    id: 'panchakarma-guide',
-    icon: '💆',
-    title: 'Panchakarma: A Complete Guide to Ayurvedic Detoxification',
-    excerpt:
-      'Everything you need to know about the five sacred cleansing therapies — from Abhyanga to Shirodhara — and how they restore balance.',
-    date: 'Mar 28, 2025',
-    readTime: '8 min read',
-    category: 'Therapies',
-  },
-  {
-    id: 'gut-health-ayurveda',
-    icon: '🍃',
-    title: 'Healing Your Gut Naturally: An Ayurvedic Approach to Digestive Health',
-    excerpt:
-      'Learn why Ayurveda considers the gut the seat of all disease, and simple dietary shifts that can transform your digestion.',
-    date: 'Mar 15, 2025',
-    readTime: '5 min read',
-    category: 'Digestive Health',
-  },
-  {
-    id: 'pcos-holistic',
-    icon: '🌸',
-    title: "Managing PCOS Holistically: Beyond Conventional Medicine",
-    excerpt:
-      'How Ayurvedic herbs, lifestyle changes, and personalised treatment plans offer lasting relief for women with polycystic ovary syndrome.',
-    date: 'Mar 2, 2025',
-    readTime: '7 min read',
-    category: "Women's Health",
-  },
-  {
-    id: 'stress-management',
-    icon: '🧘',
-    title: 'Ayurvedic Stress Management: Finding Calm in a Modern World',
-    excerpt:
-      'From adaptogenic herbs to daily routines (dinacharya), explore time-tested Ayurvedic tools for managing stress and anxiety naturally.',
-    date: 'Feb 18, 2025',
-    readTime: '6 min read',
-    category: 'Lifestyle',
-  },
-  {
-    id: 'seasonal-eating',
-    icon: '🥗',
-    title: 'Eating with the Seasons: The Ayurvedic Ritucharya Guide',
-    excerpt:
-      'Why aligning your diet with seasonal rhythms is one of the most powerful — and simplest — things you can do for your health.',
-    date: 'Feb 5, 2025',
-    readTime: '5 min read',
-    category: 'Nutrition',
-  },
-];
+import { useBlogPosts } from '../hooks/useBlogPosts';
+import type { BlogPostRow } from '../lib/database.types';
 
 const BlogPage: React.FC = () => {
   const headerFade = useFadeUp<HTMLDivElement>();
+  const { posts, loading, error } = useBlogPosts();
 
   return (
     <>
@@ -84,7 +14,7 @@ const BlogPage: React.FC = () => {
           <Link to="/" className="back-link" id="blog-back">
             ← Back to Home
           </Link>
-          <div className="section-tag">✦ Insights & Wellness</div>
+          <div className="section-tag">✦ Insights &amp; Wellness</div>
           <h1 className="page-hero-title">Blog</h1>
           <p className="page-hero-sub">
             Explore Ayurvedic wisdom, wellness tips, and holistic health insights from Dr. Ashida Hussain.
@@ -100,23 +30,50 @@ const BlogPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="blog-grid">
-          {BLOG_POSTS.map((post, i) => (
-            <BlogCard key={post.id} post={post} index={i} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="skeleton-grid">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="skeleton-card">
+                <div className="skeleton-line skeleton-icon" />
+                <div className="skeleton-line skeleton-title" />
+                <div className="skeleton-line skeleton-text" />
+                <div className="skeleton-line skeleton-text short" />
+              </div>
+            ))}
+          </div>
+        ) : error ? (
+          <div className="data-message">
+            <p>⚠ Unable to load blog posts. Please check your Supabase connection.</p>
+            <p className="data-message-sub">{error}</p>
+          </div>
+        ) : posts.length === 0 ? (
+          <div className="data-message">
+            <p>No blog posts yet. Check back soon!</p>
+          </div>
+        ) : (
+          <div className="blog-grid">
+            {posts.map((post, i) => (
+              <BlogCard key={post.id} post={post} index={i} />
+            ))}
+          </div>
+        )}
       </section>
     </>
   );
 };
 
 interface BlogCardProps {
-  post: BlogPost;
+  post: BlogPostRow;
   index: number;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
   const fade = useFadeUp<HTMLElement>(0.12, `${index * 0.06}s`);
+  const formattedDate = new Date(post.created_at).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   return (
     <article className="blog-card fade-up" ref={fade.ref} style={fade.style}>
@@ -127,9 +84,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       <h3 className="blog-card-title">{post.title}</h3>
       <p className="blog-card-excerpt">{post.excerpt}</p>
       <div className="blog-card-meta">
-        <span>{post.date}</span>
+        <span>{formattedDate}</span>
         <span className="blog-meta-dot">·</span>
-        <span>{post.readTime}</span>
+        <span>{post.read_time}</span>
       </div>
     </article>
   );
