@@ -15,7 +15,7 @@ const HowItWorks: React.FC = () => {
         </div>
         <h2 className="section-title">How It Works</h2>
         <p className="section-sub">
-          Simple steps to begin your Ayurvedic wellness journey with Dr. Priya
+          Simple steps to begin your Ayurvedic wellness journey with Dr. Ashida
         </p>
       </div>
 

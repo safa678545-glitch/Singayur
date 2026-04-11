@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
           Rooted in Nature.
         </h1>
         <p className="hero-sub">
-          Personalised Ayurvedic care for the modern lifestyle. Dr. Priya guides
+          Personalised Ayurvedic care for the modern lifestyle. Dr. Ashida guides
           you through holistic healing — naturally and effectively.
         </p>
 
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
         style={imgFade.style}
       >
         <div className="hero-img-card">
-          <div className="hero-img-inner">Dr. Priya Nair</div>
+          <div className="hero-img-inner">Dr. Ashida Hussain</div>
         </div>
         <div className="hero-badge">
           <div className="badge-icon">🌿</div>

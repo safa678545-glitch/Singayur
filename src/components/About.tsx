@@ -8,7 +8,7 @@ const About: React.FC = () => {
   return (
     <section className="about" id="about">
       <div className="about-img-wrap fade-up" ref={imgFade.ref} style={imgFade.style}>
-        <div className="about-img">Dr. Priya's Photo</div>
+        <div className="about-img">Dr. Ashida's Photo</div>
         <div className="about-img-badge">
           <strong>8+</strong>
           Years of<br />Practice
@@ -22,7 +22,7 @@ const About: React.FC = () => {
       >
         <div className="section-tag">✦ Meet Your Doctor</div>
         <h2 className="about-name">
-          Dr. Priya Nair<br />Ayurvedic Physician
+          Dr. Ashida Hussain<br />Ayurvedic Physician
         </h2>
         <span className="about-title">
           Healing Holistically, One Patient at a Time
@@ -33,7 +33,7 @@ const About: React.FC = () => {
 
         <p className="about-desc">
           With over 8 years of experience practicing Ayurveda across India and
-          Singapore, Dr. Priya treats root causes — not just symptoms. Her approach
+          Singapore, Dr. Ashida treats root causes — not just symptoms. Her approach
           blends classical Ayurvedic principles with modern diagnostic insight for
           truly personalised care.
         </p>

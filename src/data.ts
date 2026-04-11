@@ -19,6 +19,8 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Conditions', href: '#conditions' },
+  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '#contact' },
   { label: 'Book Now', href: '#book', isButton: true },
 ];
@@ -100,7 +102,7 @@ export const STEPS: Step[] = [
   {
     number: '02',
     title: 'Prakriti Assessment',
-    description: 'Dr. Priya evaluates your constitution, health history and wellness goals in depth.',
+    description: 'Dr. Ashida evaluates your constitution, health history and wellness goals in depth.',
   },
   {
     number: '03',
@@ -110,14 +112,14 @@ export const STEPS: Step[] = [
   {
     number: '04',
     title: 'Heal & Thrive',
-    description: 'Follow your plan with regular check-ins and ongoing support from Dr. Priya.',
+    description: 'Follow your plan with regular check-ins and ongoing support from Dr. Ashida.',
   },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     stars: 5,
-    quote: "After years of struggling with IBS, Dr. Priya's herbal plan transformed my gut health in just 6 weeks. Truly life-changing!",
+    quote: "After years of struggling with IBS, Dr. Ashida's herbal plan transformed my gut health in just 6 weeks. Truly life-changing!",
     name: 'Aisha M.',
     location: 'Singapore',
   },
@@ -129,7 +131,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     stars: 5,
-    quote: "Dr. Priya treated my PCOS holistically — no harsh medicines. My hormones are balanced and I feel like myself again. Highly recommend!",
+    quote: "Dr. Ashida treated my PCOS holistically — no harsh medicines. My hormones are balanced and I feel like myself again. Highly recommend!",
     name: 'Preethi S.',
     location: 'Clementi, SG',
   },

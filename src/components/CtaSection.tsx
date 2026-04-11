@@ -9,7 +9,7 @@ const CtaSection: React.FC = () => {
         <div className="section-tag">✦ Get Started</div>
         <h2 className="cta-title">Begin Your Healing Journey Today</h2>
         <p className="cta-sub">
-          Book a free 15-minute discovery call with Dr. Priya — the first step
+          Book a free 15-minute discovery call with Dr. Ashida — the first step
           towards natural wellness.
         </p>
         <a
